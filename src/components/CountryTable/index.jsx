@@ -77,15 +77,24 @@ const CountryTable = ({ countries }) => {
       </div>
       {orderedCountries?.length > 0 ?
         orderedCountries?.map(country =>
-          <Link href={`/country/${country.alpha3Code}`} key={country.alpha3Code}>
+          <Link href={`/country/${country.alpha3Code}`} key={country?.alpha3Code}>
             <div className={styles.row}>
               <div className={styles.flag}>
-                <img src={country.flag} alt={country.name}/>
+                <img src={country?.flag} alt={country?.name} />
               </div>
-              <div className={styles.name}>{country.name}</div>
-              <div className={styles.population}>{country.population}</div>
-              <div className={styles.area}>{country.area || '0'}</div>
-              <div className={styles.gini}>{country.gini || '0'} %</div>
+              <div className={styles.name}>{country?.name}</div>
+              <div className={styles.population}>{country?.population}</div>
+              <div className={styles.area}>{country?.area || '0'} %</div>
+              <div className={styles.gini}>
+                <div className={styles.progress}>
+                  <div className={styles.progress_bar} style={{
+                    width: `${country?.gini || '0'}%`,
+                    color: `${country?.gini > 0 ? 'var(--background-color)' : 'var(--text-color)'}`
+                  }}>
+                    {country?.gini || '0'} %
+                  </div>
+                </div>
+              </div>
             </div>
           </Link>
         ) : <NotFound result="Not Found" />

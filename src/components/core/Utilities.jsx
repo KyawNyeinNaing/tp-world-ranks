@@ -92,7 +92,7 @@ const CopyrightStyled = styled.p`
 const Copyright = props => {
   return (
     <CopyrightStyled {...props}>
-      Copyright © {new Date().getFullYear()} by {props?.data}
+      © {new Date().getFullYear()} created by {props?.data}
     </CopyrightStyled>
   )
 }
